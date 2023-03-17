@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plant-bot
+spec:
+  selector:
+    matchLabels:
+      app: plant-bot
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: plant-bot
+    spec:
+      containers:
+      - name: plant-bot
+        image: docker.io/weimeilin/plants-bot
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - name: mnt
+            mountPath: /app/config
+      volumes:
+      - name: mnt
+        configMap:
+          name: app-properties

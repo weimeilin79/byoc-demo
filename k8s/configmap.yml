@@ -1,0 +1,11 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: app-properties
+data:
+  app.properties: | 
+    PLANTS_TOPIC='plants'
+    BOOTSTRAP_SERVERS='<BYOC_SEED_SERVERADDR>'
+    KAFKA_SASL_USERNAME='<SENDER_USERNAME>'
+    KAFKA_SASL_PASSWORD='<SENDER_PASSWORD>'
+    SWITCH='ON'

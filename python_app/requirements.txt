@@ -1,0 +1,5 @@
+certifi==2022.5.18.1
+charset-normalizer==2.0.12
+kafka-python==2.0.2
+requests==2.27.1
+Flask==2.1.2
