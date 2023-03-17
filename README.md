@@ -20,13 +20,47 @@ and an empty VPC with one AZ, private subnet.
 
 
 ## Create an BYOC Redpanda Cluster
-See documentation or video
+See documentation or video.
 
-## Start the Consumers
+After Redpanda cluster started, create a Topic name *plants* 
+![Create Topic](images/byoc-01-create-topic.png)
+
+Click on the Security in the left menu, setup the access control to the cluster by creating a new user with Mechanism SCRAM-SHA-256.
+
+![Create User](images/byoc-02-create-user.png)
+
+Remember your id & password. 
+
+Create three sets of the credential, for all three clients
+- Python publisher (for example ID/PWD robot/xxxxxx)
+- Quarkus consumer (for example ID/PWD java-user/yyyyyy)
+- Lambda consumer (for example ID/PWD lamabda/zzzzzzz)
+  
+and configure all three ACLs, we'll grant all permissions to all topics for now. 
+
+![Create User](images/byoc-03-setup-acl.png)
+
+
+
+## Start the Consumers (Quarkus)
 
 ### Running the external java consumer on your local machine. 
+Go to folder **quarkus_app** 
 
+```
+cd quarkus_app
+```
+edit the _application.properties_  and update the bootstrap server & login credential (pick one of the user created in the previous section)
+
+- kafka.bootstrap.servers=<BYOC_SEED_SERVERADDR>
+- sasl.username=<CONSUMER_USERNAME>
+- sasl.password=<CONSUMER_PASSWORD>
+
+Run following commend to start the consumer:
+
+```
 mvn quarkus:dev
+```
 
 ### Running the serverless Lambda app.
 
@@ -38,7 +72,20 @@ Make sure you have access and logged into the EKS for running the microservice a
 
 Create a new namespace to run the microservices.
 
+```
+kubectl create -f namespace.yml
+```
+
+
 Add configuration with credentials needed to communicate to Redpanda cluster.
+
+```
+kubectl create -f configmap.yml
+```
+
 
 Deploy the python application and start sending random events into the cluster. 
 
+```
+kubectl create -f deployment.yml
+```
