@@ -38,7 +38,12 @@ _TODO: automate above instructions_
 
 
 ## Create an BYOC Redpanda Cluster
-See documentation or video.
+
+Request yours BYOC cluster [here](https://redpanda.com/try-redpanda)
+
+[![Install video](images/video-install-preview.png)](https://www.youtube.com/watch?v=1Ed_dEQaJLE)
+
+
 
 After Redpanda cluster started, create a Topic name *plants* 
 ![Create Topic](images/byoc-01-create-topic.png)
@@ -173,5 +178,6 @@ mvn quarkus:dev
 View changes in your Lambda monitoring dashboard and Redpanda Cloud UI. 
 
 
-[![Demo video](images/video-preview.png)](https://youtu.be/G5U_shbr--s)
+[![Demo video](images/video-demo-preview.png)](https://youtu.be/G5U_shbr--s)
 
+Join our [Redpanda Community](https://redpanda.com/slack) on Slack, you’ll have access to Redpanda experts and fellow Redpanda users!! Try out Redpanda’s BYOC, take it for a spin ! Request yours [here](https://redpanda.com/try-redpanda) or contact us for more information. Happy streaming!
