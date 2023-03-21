@@ -156,4 +156,22 @@ plant-bot-6d84f54c98-2d8v9   1/1     Running   0          12s
 ```
 
 
-## Result
+## Running the demo
+
+Edit the _configmap_ and turn on the switch to start publishing data
+
+```
+kubectl edit configmap app-properties -n plants
+```
+
+Start consuming localing using the Quarkus Java client
+
+```
+mvn quarkus:dev
+```
+
+View changes in your Lambda monitoring dashboard and Redpanda Cloud UI. 
+
+
+[![Demo video](images/video-preview.png)](https://youtu.be/G5U_shbr--s)
+
